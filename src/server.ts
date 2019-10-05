@@ -37,11 +37,15 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400).send('the link is required.');
     }
 
-    let img = await filterImageFromURL(image_url);
-    
-    res.status(200).send(img);
-    //deleteLocalFiles([img]);
-    return res;
+    try{
+      let img = await filterImageFromURL(image_url);
+      return res.status(200).sendFile(img, () =>{
+        deleteLocalFiles([img])
+      });
+      
+    }catch(err){
+      return res.status(400).send('the request is insufficient');
+    }
   });
   
   //! END @TODO1
