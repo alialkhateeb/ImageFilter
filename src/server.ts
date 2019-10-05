@@ -30,6 +30,23 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   /**************************************************************************** */
 
+  app.get("/filteredimage/", async ( req: Request, res: Response ) => {
+    let {image_url} = req.query;
+    
+    if (!image_url){
+      return res.status(400).send('the link is required.');
+    }
+
+    try{
+      let img = await filterImageFromURL(image_url);
+      return res.status(200).sendFile(img, () =>{
+        deleteLocalFiles([img])
+      });
+      
+    }catch(err){
+      return res.status(400).send('the request is insufficient');
+    }
+  });
   
   //! END @TODO1
   
