@@ -36,5 +36,9 @@ Prevent requests without valid authentication headers.
 
 ### Custom Domain Name
 
+http://udacityc2imagefilter-env.mimgipvc7i.us-east-1.elasticbeanstalk.com/
+
 Add your own domain name and have it point to the running services (try adding a subdomain name to point to the processing server)
 > !NOTE: Domain names are not included in AWS’ free tier and will incur a cost.
+
+http://udacityc2imagefilter-env.mimgipvc7i.us-east-1.elasticbeanstalk.com/
